@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youth Culture & Sports Hub - Empowering Rwandan Youth</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .hero {
+            background: linear-gradient(135deg, #d35400 0%, #e67e22 50%, #f39c12 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .nav {
+            background: rgba(44, 62, 80, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav a:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            margin-bottom: 40px;
+        }
+
+        .section:nth-child(even) {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .section h2 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #e67e22, #f39c12);
+            display: block;
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .section-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Icons */
+        .icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-left: 5px solid #e67e22;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: #d35400;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Quote */
+        .quote {
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            position: relative;
+            font-style: italic;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .quote::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            color: #e67e22;
+        }
+
+        /* Feedback */
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .feedback-item {
+            background: #fff3e0;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #f39c12;
+        }
+
+        .feedback-quote {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .feedback-solution {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        /* Stats */
+        .stat-highlight {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        /* CTA Buttons */
+        .cta-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 50px 0;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Research Insights */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .insight-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .insight-card h4 {
+            color: #d35400;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 1.2rem;
+        }
+
+        .closing-statement {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #f39c12;
+            margin-top: 20px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .nav-container {
+                gap: 15px;
+            }
+            
+            .nav a {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+            
+            .cta-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1>Empowering Rwandan Youth Through Arts, Culture & Sports</h1>
+            <p>A digital solution bridging the gap between talent and opportunity, connecting youth to creative and athletic possibilities across Rwanda</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#journey">🌟 The Journey</a>
+            <a href="#solution">🛠️ Our Solution</a>
+            <a href="#prototype">📱 Prototype</a>
+            <a href="#reflection">🤔 Reflection</a>
+            <a href="#conclusion">🎯 Join the Movement</a>
+        </div>
+    </nav>
+
+    <!-- Section 1: Entrepreneurial Journey -->
+    <section id="journey" class="section">
+        <div class="container">
+            <h2>Where It All Began: A Mission Rooted in Culture and Change</h2>
+            <div class="section-content">
+                <p>It started with a simple observation that grew into a powerful mission. Across Rwanda, talented youth were becoming increasingly disconnected from their rich cultural heritage and athletic traditions. Through comprehensive research involving over 50 youth aged 15–24, along with in-depth interviews and the Five Whys technique, we uncovered the root causes of this troubling trend.</p>
+
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <h4>🏛️ Access Barriers</h4>
+                        <p>Poor access to public creative spaces limits where youth can practice and showcase their talents</p>
+                    </div>
+                    <div class="insight-card">
+                        <h4>🤝 Community Gap</h4>
+                        <p>Limited community support leaves young artists and athletes feeling isolated</p>
+                    </div>
+                    <div class="insight-card">
+                        <h4>🏫 Institutional Neglect</h4>
+                        <p>Schools and institutions often overlook arts and sports in favor of traditional academics</p>
+                    </div>
+                    <div class="insight-card">
+                        <h4>💼 Career Perception</h4>
+                        <p>Arts and sports are viewed as hobbies rather than viable career paths</p>
+                    </div>
+                    <div class="insight-card">
+                        <h4>📚 Educational Underrepresentation</h4>
+                        <p>Cultural and athletic programs receive minimal attention in school curricula</p>
+                    </div>
+                </div>
+
+                <p>Our PESTLE analysis revealed deeper systemic challenges spanning multiple sectors:</p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3><span class="icon">🏛️</span>Political</h3>
+                        <p>Strong national policies exist, but grassroots implementation remains weak, creating a gap between intention and action.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span class="icon">💰</span>Economic</h3>
+                        <p>High youth unemployment coincides with no dedicated funding for arts programs, creating a cycle of missed opportunities.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span class="icon">👥</span>Social</h3>
+                        <p>Societal pressure to pursue STEM fields, combined with cultural erosion, pushes youth away from traditional arts.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span class="icon">💻</span>Technological</h3>
+                        <p>While digital access exists in urban areas, rural communities lack both digital literacy and technological tools.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span class="icon">⚖️</span>Legal</h3>
+                        <p>Weak intellectual property knowledge among young creators limits their ability to protect and monetize their work.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span class="icon">🌍</span>Environmental</h3>
+                        <p>Climate change threatens traditional practices and the natural resources they depend on.</p>
+                    </div>
+                </div>
+
+                <div class="quote">
+                    I feel invisible when I choose art over science. It's like my dreams don't matter to anyone.
+                    <div style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">— Youth interview participant, age 19</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Solution -->
+    <section id="solution" class="section">
+        <div class="container">
+            <h2>Introducing the Youth Culture & Sports Hub (YCSH)</h2>
+            <div class="section-content">
+                <p>In response to these challenges, we developed the Youth Culture & Sports Hub (YCSH) — a mobile-first application designed specifically for Rwandan youth aged 15–25. This innovative platform serves as a bridge between untapped talent and real opportunities, creating a digital ecosystem where creativity and athletics thrive.</p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3><span class="icon">👤</span>Dynamic User Profiles</h3>
+                        <p>Showcase your crafts, poems, music, or sports achievements with rich multimedia portfolios that tell your unique story.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span class="icon">🔔</span>Weekly Opportunity Alerts</h3>
+                        <p>Never miss funding opportunities, contests, or local events with personalized notifications tailored to your interests.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span class="icon">🎥</span>Interactive Video Tutorials</h3>
+                        <p>Learn traditional dance, poetry, weaving, and sports techniques from master practitioners and coaches.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span class="icon">🛒</span>Creative Marketplace</h3>
+                        <p>Transform your passion into profit by selling artwork, crafts, or offering creative services directly through the platform.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span class="icon">🤝</span>Peer-to-Peer Networking</h3>
+                        <p>Connect with like-minded youth, find collaborators, and access mentorship from established artists and athletes.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span class="icon">📱</span>Offline Access</h3>
+                        <p>Essential features work without internet connection, ensuring rural schools and communities stay connected to opportunities.</p>
+                    </div>
+                </div>
+
+                <div class="stat-highlight">
+                    Youth-friendly • Lightweight Design • Minimal Data Usage • Maximum Impact
+                </div>
+
+                <p>The YCSH is more than just an app — it's a movement that bridges the gap between talent and visibility in underserved communities. By combining traditional cultural preservation with modern technology, we're creating pathways for youth to not just participate in Rwanda's cultural renaissance, but to lead it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Prototype -->
+    <section id="prototype" class="section">
+        <div class="container">
+            <h2>From Sketch to Screen: Building With Youth, For Youth</h2>
+            <div class="section-content">
+                <p>Our low-fidelity prototype, meticulously crafted using Figma, embodies the principle of human-centered design. Every interface element, from the personalized dashboard to the intuitive navigation icons, was designed with our target users at the center of the development process.</p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3><span class="icon">🎨</span>Intuitive Interface</h3>
+                        <p>Clean, simple design with a personalized dashboard that adapts to each user's interests and activity level.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span class="icon">🎯</span>Clear Navigation</h3>
+                        <p>Distinctive icons for tutorials, events, profiles, and marketplace features ensure users never get lost.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span class="icon">📊</span>User-Centered Design</h3>
+                        <p>Every feature reflects direct feedback from our target demographic, ensuring relevance and usability.</p>
+                    </div>
+                </div>
+
+                <p>The true validation of our approach came through extensive user testing with 5 representative participants. Their feedback didn't just inform our design decisions — it fundamentally shaped the platform's evolution:</p>
+
+                <div class="feedback-grid">
+                    <div class="feedback-item">
+                        <div class="feedback-quote">"Easy to understand, but I wish I could personalize it more."</div>
+                        <div class="feedback-solution">→ Added customizable dashboard with personal interest widgets</div>
+                    </div>
+                    <div class="feedback-item">
+                        <div class="feedback-quote">"I love the tutorials, but where are funding links?"</div>
+                        <div class="feedback-solution">→ Integrated funding alerts directly into the tutorial interface</div>
+                    </div>
+                    <div class="feedback-item">
+                        <div class="feedback-quote">"Make the menu simpler"</div>
+                        <div class="feedback-solution">→ Simplified navigation with universal icons and reduced cognitive load</div>
+                    </div>
+                    <div class="feedback-item">
+                        <div class="feedback-quote">"Can I access this without internet?"</div>
+                        <div class="feedback-solution">→ Developed offline-first architecture for core features</div>
+                    </div>
+                    <div class="feedback-item">
+                        <div class="feedback-quote">"How do I connect with other artists?"</div>
+                        <div class="feedback-solution">→ Enhanced peer networking features with smart matching algorithms</div>
+                    </div>
+                </div>
+
+                <div class="stat-highlight">
+                    🎉 80% of surveyed youth would download and actively use the app if launched today
+                </div>
+
+                <p>This overwhelming positive response validates not just our solution, but our approach. By building with youth rather than for them, we've created a platform that truly resonates with its intended audience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Reflection -->
+    <section id="reflection" class="section">
+        <div class="container">
+            <h2>Lessons From the Field: What I Learned</h2>
+            <div class="section-content">
+                <p>This journey has been as much about personal discovery as it has been about creating solutions. Through months of research, design, and testing, several profound truths have emerged that challenge conventional wisdom about Rwanda's youth and their relationship with arts, culture, and sports.</p>
+
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <h4>🔍 The Engagement Myth</h4>
+                        <p>Rwanda's youth aren't disinterested in their cultural heritage — they're systemically excluded from meaningful participation. The passion exists; the pathways don't.</p>
+                    </div>
+                    <div class="insight-card">
+                        <h4>🎭 Identity and Healing</h4>
+                        <p>Creative expression serves as more than entertainment; it's fundamentally tied to identity formation, emotional healing, and community connection.</p>
+                    </div>
+                    <div class="insight-card">
+                        <h4>✨ The Legitimacy Gap</h4>
+                        <p>Youth don't need permission to be creative — they need legitimacy, recognition, and practical tools to transform passion into sustainable opportunities.</p>
+                    </div>
+                    <div class="insight-card">
+                        <h4>🌉 Technology as Bridge</h4>
+                        <p>Technology alone isn't the answer, but when paired with education and equitable access, it becomes a powerful bridge to opportunity.</p>
+                    </div>
+                    <div class="insight-card">
+                        <h4>🔄 Stakeholder Transformation</h4>
+                        <p>Real change requires stakeholders — parents, schools, media — to shift from mere tolerance of creative pursuits to active empowerment of young creators.</p>
+                    </div>
+                </div>
+
+                <p>These insights directly connect to our PESTLE analysis findings, revealing that the challenges facing Rwandan youth are interconnected and systemic. However, they also point to an encouraging truth: the solutions are equally interconnected. When we address access, we simultaneously tackle institutional neglect. When we provide digital tools, we create new economic opportunities. When we celebrate cultural expression, we strengthen social cohesion.</p>
+
+                <div class="quote">
+                    Real change happens when digital innovation meets cultural preservation, creating sustainable pathways for youth to both honor their heritage and build their futures.
+                </div>
+
+                <p>Perhaps most importantly, this project has reinforced that sustainable social innovation requires deep listening, collaborative design, and the humility to let the community guide the solution. The Youth Culture & Sports Hub isn't just our vision for Rwanda's youth — it's their vision, channeled through technology and supported by evidence-based design.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Conclusion -->
+    <section id="conclusion" class="section">
+        <div class="container">
+            <h2>This is More Than an App. It's a Movement.</h2>
+            <div class="section-content">
+                <p>What began as a question about youth disengagement has evolved into a comprehensive solution backed by research, validated through testing, and refined through genuine collaboration with our target community. We didn't just identify problems — we listened to solutions. We didn't just build technology — we created pathways to opportunity.</p>
+
+                <p>The journey from observation to intervention has taught us that Rwanda's youth possess incredible talent, passion, and vision. What they've been missing are the platforms, recognition, and systemic support needed to transform their creative and athletic gifts into sustainable futures.</p>
+
+                <p>Today, with a validated prototype and overwhelming community support, we stand ready to scale this solution and create lasting impact across Rwanda and beyond. But this is bigger than any single application — it's about fundamentally shifting how we support, celebrate, and invest in the creative potential of young people.</p>
+
+                <div class="cta-container">
+                    <a href="mailto:partner@ycsh.rw" class="cta-button">
+                        <span class="icon">🤝</span>
+                        Partner with us
+                    </a>
+                    <a href="#support" class="cta-button">
+                        <span class="icon">💡</span>
+                        Support our launch
+                    </a>
+                    <a href="#community" class="cta-button">
+                        <span class="icon">🌟</span>
+                        Join our community
+                    </a>
+                </div>
+
+                <div class="stat-highlight">
+                    Ready to transform how Rwanda nurtures its creative and athletic talent? The movement starts with you.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Together, we're building bridges between tradition and innovation, between talent and opportunity, between dreams and reality.</p>
+            <div class="closing-statement">
+                "We're not just reviving tradition — we're building futures through creativity, community, and code."
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(44, 62, 80, 0.98)';
+            } else {
+                nav.style.background = 'rgba(44, 62, 80, 0.95)';
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.feature-card, .insight-card, .feedback-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
